@@ -11,9 +11,9 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Route::get('/fitur', function () {
-//     return view('index');
-// })->name('fitur');
+Route::get('/fitur', function () {
+    return view('fitur');
+})->name('fitur');
 
 
 // Route::get('/login', function () {

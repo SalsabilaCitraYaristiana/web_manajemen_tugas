@@ -5,7 +5,7 @@
     <div id="bagian-about" class="relative w-full px-6 pt-12 md:pt-20 overflow-visible flex flex-col items-center">
         <div class="absolute inset-x-0 top-0 h-[85%] md:h-[85%] bg-[#0B2D48] z-0"></div>
             <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center mt-[2%] md:mt-[3%] relative z-10" data-aos="fade-up" data-aos-duration="1000">
-                {{-- Tombol Pill 'Tentang Kami' dengan Icon Buku Kecil --}}
+                {{-- Tombol Pill --}}
                 <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full shadow-sm mb-8 bg-[#EBF3FD]">
                     {{-- Icon Buku Kuning --}}
                     <span class="flex items-center justify-center bg-[#F5B82A] text-[#0B2D48] w-10 h-10 rounded-full p-1">
@@ -204,7 +204,7 @@
                         alt="Teamwork collaboration" 
                         class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                     >
-                </div>
+                </div> 
                 <div class="flex flex-col gap-4 justify-between h-full">
                     <div class="w-full h-[145px] sm:h-[202px] rounded-2xl overflow-hidden shadow-lg border border-gray-100">
                         <img 

@@ -16,7 +16,7 @@
                 <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-10 lg:mx-auto">
                     <a href="{{ route('index') }}" class="text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none font-[Nexa_Heavy] tracking-wide text-lg decoration-none">Beranda</a>
                     <a href="{{ route('about') }}" class="text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none font-[Nexa_Heavy] tracking-wide text-lg decoration-none">Tentang Kami</a>
-                    <a href="#" class="text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none font-[Nexa_Heavy] tracking-wide text-lg decoration-none">Fitur</a>
+                    <a href="{{ route('fitur') }}" class="text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none font-[Nexa_Heavy] tracking-wide text-lg decoration-none">Fitur</a>
                 </div>
                 <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
                     <a href="#" class="relative font-[Nexa_Heavy] text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none">
