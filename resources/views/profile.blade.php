@@ -4,7 +4,7 @@
 <div class="space-y-6 max-w-5xl mx-auto">
 
     <div>
-        <h1 class="text-2xl font-bold font-[Nexa_Heavy] text-[#0B2D48] tracking-tight">Setting Profile</h1>
+        <h1 class="text-2xl font-bold font-[Nexa_Heavy] text-[#0B2D48] tracking-tight">Informasi Profile</h1>
         <p class="text-xs text-black font-medium mt-1 font-[Nexa_Light]">Kelola informasi data diri dan keamanan akun anda.</p>
     </div>
 
