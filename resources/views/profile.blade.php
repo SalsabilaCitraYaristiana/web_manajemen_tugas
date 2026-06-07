@@ -1,0 +1,86 @@
+@extends('layouts.dash_layout')
+
+@section('dashboard-content')
+<div class="space-y-6 max-w-5xl mx-auto">
+    
+    <div>
+        <h1 class="text-2xl font-bold text-[#0B2D48] tracking-tight">Setting Profile</h1>
+        <p class="text-xs text-gray-400 font-medium mt-1">Kelola informasi data diri dan keamanan akun anda.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        
+        <div class="bg-[#E2ECFA]/40 border border-[#1D3A6F]/10 rounded-2xl p-6 text-center shadow-sm space-y-6">
+            <div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200 flex items-center justify-center">
+                <i class="fa-regular fa-user text-4xl text-[#0B2D48]/40"></i>
+            </div>
+
+            <div class="space-y-1">
+                <h2 class="text-base font-bold text-[#0B2D48] tracking-tight">{{ Auth::user()->name }}</h2>
+                <p class="text-xs text-[#0B2D48]/70 font-semibold">{{ Auth::user()->email ?? Auth::user()->username }}</p>
+            </div>
+
+            <hr class="border-gray-200/60">
+
+            <div class="flex items-center justify-center gap-2.5 text-[#0B2D48] font-bold text-xs bg-white/80 py-3 rounded-xl border border-gray-100">
+                <i class="fa-regular fa-user text-sm text-[#0B2D48]/70"></i>
+                <span>Aktif sejak {{ Auth::user()->created_at ? Auth::user()->created_at->translatedFormat('d F Y') : date('d M Y') }}</span>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-[#E2ECFA]/40 border border-[#1D3A6F]/10 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#0B2D48] tracking-tight">Informasi Profile</h3>
+
+            <form action="#" method="POST" class="space-y-5">
+                @csrf
+                @method('PUT') {{-- Menggunakan method PUT untuk proses pembaruan data --}}
+
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-[#0B2D48]/80">Nama Lengkap</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+                        <input type="text" name="name" value="{{ Auth::user()->name }}" required
+                               class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-[#0B2D48]/80">Email</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
+                            <i class="fa-regular fa-envelope"></i>
+                        </span>
+                        <input type="email" name="email" value="{{ Auth::user()->email }}" required
+                               class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-[#0B2D48]/80">Password (Kosongkan jika tidak diganti)</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <input type="password" name="password" placeholder="******"
+                               class="w-full pl-11 pr-12 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
+                        <button type="button" class="absolute right-4 text-gray-400 hover:text-[#0B2D48] cursor-pointer text-xs">
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk"></i> Ubah & Simpan
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+@endsection

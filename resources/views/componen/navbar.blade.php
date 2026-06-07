@@ -19,10 +19,10 @@
                     <a href="{{ route('fitur') }}" class="text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none font-[Nexa_Heavy] tracking-wide text-lg decoration-none">Fitur</a>
                 </div>
                 <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
-                    <a href="#" class="relative font-[Nexa_Heavy] text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none">
+                    <a href="{{ route('login') }}" class="relative font-[Nexa_Heavy] text-[#142D43] pb-1 border-b-3 border-transparent hover:border-[#F8BF12] transition-all duration-200 cursor-pointer text-lg decoration-none">
                     Sign In
                     </a>
-                    <button class="bg-[#073047] font-[Nexa_Heavy] text-white px-5 py-2 rounded-xl hover:bg-[#F8BF12] hover:text-[#142D43]">Sign Up</button>
+                    <a href="{{ route('register') }}" class="bg-[#073047] font-[Nexa_Heavy] text-white px-5 py-2 rounded-xl hover:bg-[#F8BF12] hover:text-[#142D43]">Sign Up</a>
                 </div>
             </div>
         </nav>
