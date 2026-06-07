@@ -41,8 +41,8 @@
                         <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
                             <i class="fa-regular fa-user"></i>
                         </span>
-                        <input type="text" name="name" value="{{ Auth::user()->name }}" required
-                               class="w-full font-[Nexa_Light] pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
+                        <input type="text" name="name" value="{{ Auth::user()->name }}" readonly
+                               class="w-full font-[Nexa_Light] pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white shadow-sm">
                     </div>
                 </div>
 
@@ -52,30 +52,23 @@
                         <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
                             <i class="fa-regular fa-envelope"></i>
                         </span>
-                        <input type="email" name="email" value="{{ Auth::user()->email }}" required
-                               class="w-full font-[Nexa_Light] pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
+                        <input type="email" name="email" value="{{ Auth::user()->email }}" readonly
+                               class="w-full font-[Nexa_Light] pl-11 pr-4 py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white shadow-sm">
                     </div>
                 </div>
 
                 <div class="space-y-1.5">
-                    <label class="text-xs font-bold text-[#0B2D48]/80 font-[Nexa_Heavy]">Password (Kosongkan jika tidak diganti)</label>
+                    <label class="text-xs font-bold text-[#0B2D48]/80 font-[Nexa_Heavy]">Password</label>
                     <div class="relative flex items-center">
                         <span class="absolute left-4 text-[#0B2D48]/60 text-sm">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <input type="password" name="password" id="password-field"
-                               class="w-full pl-11 pr-12 font-[Nexa_Light] py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white focus:outline-none focus:border-[#0B2D48] transition-all shadow-sm">
-
+                       <input type="password" name="password" id="password-field" value="{{ session('user_raw_password') }}" readonly
+                       class="w-full pl-11 pr-12 font-[Nexa_Light] py-3 border border-gray-300 rounded-xl font-bold text-xs text-[#0B2D48] bg-white shadow-sm">
                         <button type="button" id="toggle-password" class="absolute right-4 text-gray-400 hover:text-[#0B2D48] cursor-pointer text-xs">
                             <i class="fa-regular fa-eye-slash" id="eye-icon"></i>
                         </button>
                     </div>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" class="w-full font-[Nexa_Heavy] py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="fa-solid fa-floppy-disk"></i> Ubah & Simpan
-                    </button>
                 </div>
 
             </form>

@@ -30,7 +30,7 @@ class AutentifikasiController extends Controller
         'password' => Hash::make($request->password),
     ]);
 
-    return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+    return redirect()->route('login')->with('success', 'Registrasi berhasil! Silahkan login.');
     }
 
     public function showLogin()
@@ -54,6 +54,7 @@ class AutentifikasiController extends Controller
 
         if (Auth::attempt($loginData)) {
             $request->session()->regenerate();
+            session(['user_raw_password' => $request->password]);
             return redirect()->intended(route('dashboard'))->with('success', 'Selamat datang kembali!');
         }
         return back()->withErrors([
