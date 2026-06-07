@@ -28,7 +28,7 @@
             <div class="space-y-8">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <img src="../img/fokusin_logo.png" alt="Logo" class="w-100 h-auto object-contain">
+                        <img src="{{ asset('img/fokusin_logo.png') }}" alt="Logo" class="w-full h-auto object-contain">
                     </div>
                     <button onclick="toggleSidebar()" class="lg:hidden text-[#0B2D48] text-xl focus:outline-none cursor-pointer">
                         <i class="fa-solid fa-xmark"></i>
