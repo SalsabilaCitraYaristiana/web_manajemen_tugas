@@ -23,6 +23,9 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'role',
+        'status',
+        'last_seen'
     ];
 
     /**
@@ -45,6 +48,24 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_seen' => 'datetime',
         ];
     }
+
+    public function getStatusAttribute()    
+    {
+        if (!$this->last_seen) {
+            return 'offline';
+    }
+        $minutes = now()->diffInMinutes($this->last_seen);
+
+        if ($minutes <= 5) {
+            return 'online';
+    }
+
+        if ($minutes <= 30) {
+            return 'idle';
+    }
+        return 'offline';
+}   
 }

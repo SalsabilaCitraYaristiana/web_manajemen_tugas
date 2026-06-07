@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - Fokusin</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
@@ -27,4 +29,78 @@
       }
     </style>
   </head>
-  <body class="bg-[#F3F3F3]">
+  <body class="bg-[#ECECEC]">
+    <div class="w-screen h-screen">
+        <div class="relative w-screen h-screen overflow-hidden bg-[linear-gradient(135deg,#F6BF0E_0%,#907008_100%)]">
+            <a href="/" class="absolute top-6 left-6 text-[#0B2D48] hover:opacity-70 transition z-20">
+                <i class="fa-solid fa-chevron-left text-2xl"></i>
+            </a>
+
+            <img src="{{ asset('img/logo-admin.png') }}" alt="Logo" class="absolute bottom-[-20px] w-[520px] opacity-100 pointer-events-none select-none">
+            <div class="absolute top-[120px] left-1/2 -translate-x-1/2 text-center z-10">
+                <h1 class="text-6xl font-[Nexa_Heavy] text-[#142A74] font-bold">Hello!</h1>
+                <p class="text-2xl text-[#142A74] mt-1">Welcome to fokusin</p>
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-center pt-16">
+                <div class="w-full max-w-md bg-[#DEEAFB] rounded-2xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.18)]">
+                    <div class="flex justify-center mb-5">
+                        <img src="{{ asset('img/fokusin_logo.png') }}" alt="Fokusin" class="h-20">
+                    </div>
+                    <p class="text-center text-[#142A74] text-lg mb-6">Please enter your detail</p>
+                    @if(session('error'))
+                        <div class="mb-4 p-3 bg-red-100 border border-red-300 text-red-600 text-xs rounded-lg">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('admin.login.submit') }}" method="POST">
+
+                        @csrf
+                        <div class="space-y-4">
+                            <div> 
+                                <input type="email" name="email" placeholder="Email" required 
+                                class="w-full h-12 bg-white rounded-lg px-4 text-[#0B2D48] border border-gray-200 outline-none focus:border-[#0F2E7A]">
+                            </div>
+                            <div class="relative">
+                                <input type="password" id="password" name="password" placeholder="Password" required
+                                class="w-full h-12 bg-white rounded-lg px-4 pr-12 text-[#0B2D48] border border-gray-200 outline-none focus:border-[#0F2E7A]">
+                                <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0F2E7A]">
+                                    <i id="eye-icon" class="fa-regular fa-eye-slash"></i>
+                                </button>
+                            </div>
+
+                            <button type="submit" class="w-full h-12 rounded-lg bg-[#F6BF0E] hover:bg-[#E2B00D] text-[#0F2E7A] font-[Nexa_Heavy] font-bold flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-right-to-bracket"></i>Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function togglePassword() 
+        {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+
+            if(password.type === 'password') {
+                password.type = 'text';
+
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+            else {
+                password.type = 'password';
+
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+
+        }
+    </script>
+  </body>
+</html>
+                    
+

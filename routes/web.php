@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutentifikasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -96,3 +98,17 @@ Route::get('/api/search-tugas', function(Request $request) {
 })->middleware('auth')->name('api.search');
 
 Route::post('/logout', [AutentifikasiController::class, 'logout'])->name('logout');
+ // admin routes
+Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])
+    ->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])
+    ->name('admin.login.submit');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])
+    ->name('admin.logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard']
+    )->name('admin.dashboard');
+    Route::get('/admin/pengguna', [AdminController::class, 'pengguna']
+    )->name('admin.pengguna');
+});
