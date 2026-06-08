@@ -8,25 +8,23 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $totalUser = User::where('role', 'user')->count();
-
-        $aktifUser = User::where('role', 'user')
-            ->where('status', 'online')
-            ->count();
-
-        $online = User::where('role', 'user')
-            ->where('status', 'online')
-            ->count();
-
-        $idle = User::where('role', 'user')
-            ->where('status', 'idle')
-            ->count();
-
-        $offline = User::where('role', 'user')
-            ->where('status', 'offline')
-            ->count();
-
         $users = User::where('role', 'user')->get();
+
+        $totalUser = $users->count();
+
+        $online = $users->filter(function ($user) {
+            return $user->status == 'online';
+            })->count();
+
+        $idle = $users->filter(function ($user) {
+            return $user->status == 'idle';
+            })->count();
+
+        $offline = $users->filter(function ($user) {
+            return $user->status == 'offline';
+            })->count();
+
+        $aktifUser = $online;
 
         return view('admin.dashboard', compact(
             'totalUser',

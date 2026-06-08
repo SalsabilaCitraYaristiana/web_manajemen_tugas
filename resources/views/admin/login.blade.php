@@ -38,7 +38,7 @@
 
         <img src="{{ asset('img/logo-admin.png') }}" alt="Logo" class="absolute bottom-[-20px] left-[-50px] w-[280px] sm:w-[400px] md:w-[520px] opacity-40 md:opacity-100 pointer-events-none select-none z-0">
 
-        <div class="w-full text-center mt-12 md:mt-6 mb-6 z-20">
+        <div class="w-full text-center mt-12 md:mt-6 mb-6 z-20 translate-y-20">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-[Nexa_Heavy] text-[#142A74] font-bold">Hello!</h1>
             <p class="text-lg sm:text-xl md:text-2xl text-[#142A74] mt-1 font-[Nexa_Heavy]">Welcome to fokusin</p>
         </div>

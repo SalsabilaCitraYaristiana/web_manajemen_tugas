@@ -21,7 +21,7 @@
         <div class="bg-[#E7C54C] rounded-3xl p-6 sm:p-8 shadow-md">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <h3 class="text-white text-base sm:text-lg font-[Nexa_Heavy] truncate">Aktif Hari Ini</h3>
+                    <h3 class="text-white text-base sm:text-lg font-[Nexa_Heavy] truncate">Aktif Sekarang</h3>
                     <p class="text-white text-4xl sm:text-5xl md:text-6xl mt-2 sm:mt-3 font-[Nexa_Heavy] break-words">{{ $aktifUser }}</p>
                 </div>
                 <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 flex items-center justify-center shrink-0">
