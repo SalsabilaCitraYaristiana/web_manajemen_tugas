@@ -112,13 +112,7 @@
                                 <div class="max-h-[360px] overflow-y-auto space-y-5 pr-1">
                                     @forelse(Auth::user()->notifications->take(5) as $notif)
                                         @php
-                                            $judulTugas = $notif->data['judul'] ?? null;
-                                            if (!$judulTugas && isset($notif->data['pesan'])) {
-                                                preg_match('/"([^"]+)"/', $notif->data['pesan'], $matches);
-                                                $judulTugas = $matches[1] ?? null;
-                                            }
-                                            $tugasAsli = \App\Models\Tugas::where('user_id', Auth::id())->where('judul', $judulTugas)->first();
-                                            $isSelesai = $tugasAsli && $tugasAsli->status === 'Selesai';
+                                            $isSelesai = isset($notif->data['status_tugas']) && $notif->data['status_tugas'] === 'Selesai';
                                         @endphp
 
                                         <div class="flex items-center justify-between gap-4 py-0.5">

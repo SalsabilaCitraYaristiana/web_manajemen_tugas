@@ -44,6 +44,7 @@ class TugasController extends Controller
             'deskripsi' => 'required|string',
             'deadline' => 'required|date',
             'prioritas' => 'required|in:High,Medium,Low',
+            'status' => 'required|in:Belum Selesai,Sedang Berjalan,Selesai',
         ]);
 
         Tugas::create([
@@ -52,7 +53,7 @@ class TugasController extends Controller
             'deskripsi' => $request->deskripsi,
             'deadline' => $request->deadline,
             'prioritas' => $request->prioritas,
-            'status' => 'Belum Selesai',
+            'status' => $request->status,
         ]);
 
         return redirect()->route('daftar.tugas')
@@ -94,10 +95,7 @@ class TugasController extends Controller
         ]);
 
         if ($request->status === 'Selesai') {
-            $notification = Auth::user()->unreadNotifications()->where('data->tugas_id', $tugas->id)->first();
-            if ($notification) {
-                $notification->markAsRead();
-            }
+            Auth::user()->Notifications()->where('data->tugas_id', $tugas->id)->delete();
         }
 
         return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil disimpan.');

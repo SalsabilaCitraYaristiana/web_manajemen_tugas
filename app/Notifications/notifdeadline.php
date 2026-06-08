@@ -27,11 +27,17 @@ class notifdeadline extends Notification
 
     public function toArray($notifiable)
     {
+        if ($this->tugas->status === 'Selesai') {
+            $pesanDinamis = "Tugas '" . $this->tugas->judul . "' telah selesai dikerjakan!";
+        } else {
+            $pesanDinamis = "Tugas '" . $this->tugas->judul . "' mendekati deadline dalam " . $this->sisaHari . " hari lagi!";
+        }
         return [
             'tugas_id' => $this->tugas->id,
             'judul'    => $this->tugas->judul,
-            'pesan'    => "Tugas '" . $this->tugas->judul . "' mendekati deadline dalam " . $this->sisaHari . " hari lagi!",
+            'pesan'    => $pesanDinamis,
             'deadline' => $this->tugas->deadline,
+            'status_tugas' => $this->tugas->status,
         ];
     }
 }
