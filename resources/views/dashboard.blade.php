@@ -48,12 +48,12 @@
         
         <div class="lg:col-span-2 space-y-4">
             @forelse($tugasAktif as $tugas)
-                <div class="bg-[#E2ECFA]/60 p-6 rounded-2xl border border-blue-200/40 shadow-sm flex items-center justify-between gap-4">
+                <div class="bg-[#E2ECFA]/60 p-6 rounded-2xl border border-blue-200/40 shadow-sm flex items-center justify-between gap-4 hover:shadow-md transition-all">
                     <div class="space-y-2 min-w-0">
                         <h3 class="font-[Nexa_Heavy] text-xl text-[#0B2D48] truncate">{{ $tugas->judul }}</h3>
                         <p class="font-[Nexa_Light] text-[11px] text-gray-400 leading-relaxed truncate">{{ $tugas->deskripsi }}</p>
-                        <a href="{{ route('daftar.tugas') }}" class="inline-flex items-center gap-1 text-xs font-[Nexa_Heavy] text-[#142A74] hover:underline pt-2">
-                            Lihat semua <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <a href="{{ route('tugas.show', $tugas->id) }}" class="inline-flex items-center gap-1 text-xs font-[Nexa_Heavy] text-[#142A74] hover:underline pt-2">
+                            Lihat Detail <i class="fa-solid fa-chevron-right text-[10px]"></i>
                         </a>
                     </div>
                     
@@ -78,7 +78,7 @@
             
             <div class="space-y-3 max-h-[340px] overflow-y-auto pr-1">
                 @forelse($riwayatTugas as $riwayat)
-                    <div class="bg-[#F8BF12] p-4 rounded-xl flex items-center justify-between gap-4 shadow-sm">
+                    <a href="{{ route('tugas.show', $riwayat->id) }}" class="bg-[#F8BF12] p-4 rounded-xl flex items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all block">
                         <div class="min-w-0 text-[#0B2D48]">
                             <h4 class="font-[Nexa_Heavy] text-sm truncate">{{ $riwayat->judul }}</h4>
                             <p class="font-[Nexa_Light] text-[10px] opacity-80 truncate mt-0.5">{{ $riwayat->deskripsi }}</p>
@@ -86,7 +86,7 @@
                         <div class="shrink-0 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-white text-xs">
                             <i class="fa-solid fa-check"></i>
                         </div>
-                    </div>
+                    </a>
                 @empty
                     <div class="text-center py-16">
                         <p class="font-[Nexa_Light] text-xs text-gray-400">Belum ada riwayat tugas yang selesai.</p>

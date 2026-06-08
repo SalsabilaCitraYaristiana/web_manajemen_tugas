@@ -112,3 +112,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/pengguna', [AdminController::class, 'pengguna']
     )->name('admin.pengguna');
 });
+
+Route::get('/tugas/{id}', [TugasController::class, 'show'])
+    ->name('tugas.show');

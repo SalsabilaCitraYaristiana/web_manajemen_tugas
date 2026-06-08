@@ -10,26 +10,31 @@ class AdminController extends Controller
     {
         $totalUser = User::where('role', 'user')->count();
 
-        $online = User::where('role', 'user')->where('status', 'online')->count();
+        $aktifUser = User::where('role', 'user')
+            ->where('status', 'online')
+            ->count();
 
-        $idle = User::where('role', 'user')->where('status', 'idle')->count();
+        $online = User::where('role', 'user')
+            ->where('status', 'online')
+            ->count();
 
-        $offline = User::where('role', 'user')->where('status', 'offline')->count();
+        $idle = User::where('role', 'user')
+            ->where('status', 'idle')
+            ->count();
 
-        $users = User::where('role', 'user')->latest()->take(6)->get();
+        $offline = User::where('role', 'user')
+            ->where('status', 'offline')
+            ->count();
 
-        $aktifTahunan = User::where('role', 'user')->count();
-
-        $aktifUser = $online;
+        $users = User::where('role', 'user')->get();
 
         return view('admin.dashboard', compact(
             'totalUser',
+            'aktifUser',
             'online',
             'idle',
             'offline',
-            'users',
-            'aktifTahunan',
-            'aktifUser'
+            'users'
         ));
     }
 
@@ -38,10 +43,16 @@ class AdminController extends Controller
         $search = $request->search;
         $status = $request->status;
 
-        $users = User::where('role', 'user')->when($search, function ($query) use ($search) {
-                $query->where('name', 'like', "%{$search}%")
+        $users = User::where('role', 'user')
+            ->when($status, function ($query) use ($status) {
+                $query->where('status', $status);
+            })
+            ->when($search, function ($query) use ($search) {
+                $query(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%");
+                });
             })
             ->get();
 
@@ -54,6 +65,7 @@ class AdminController extends Controller
             'users',
             'totalUser',
             'search',
+            'status',
             'aktifUser'
         ));
     }

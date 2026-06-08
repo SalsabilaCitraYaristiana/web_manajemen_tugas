@@ -43,18 +43,21 @@
     </div>
 
     <div class="flex gap-2 mb-8">
-        <button class="px-4 py-1 rounded-full border text-xs border-gray-400 hover:bg-[#D4B442] hover:text-white">
+        <a href="{{ route('admin.pengguna') }}" class="px-4 py-1 rounded-full border text-xs {{ !request('status') ? 'bg-[#D4B442] text-white' : '' }}">
             Semua
-        </button>
-        <button class="px-4 py-1 rounded-full border text-xs border-gray-400 hover:bg-green-500 hover:text-white">
+        </a>
+
+        <a href="{{ route('admin.pengguna', ['status' => 'online']) }}" class="px-4 py-1 rounded-full border text-xs {{ request('status')=='online' ? 'bg-green-500 text-white' : '' }}">
             Online
-        </button>
-        <button class="px-4 py-1 rounded-full border text-xs border-gray-400 hover:bg-yellow-500 hover:text-white">
+        </a>
+
+        <a href="{{ route('admin.pengguna', ['status' => 'idle']) }}" class="px-4 py-1 rounded-full border text-xs {{ request('status')=='idle' ? 'bg-yellow-500 text-white' : '' }}">
             Idle
-        </button>
-        <button class="px-4 py-1 rounded-full border text-xs border-gray-400 hover:bg-gray-500 hover:text-white">
+        </a>
+
+        <a href="{{ route('admin.pengguna', ['status' => 'offline']) }}" class="px-4 py-1 rounded-full border text-xs {{ request('status')=='offline' ? 'bg-gray-500 text-white' : '' }}">
             Offline
-        </button>
+        </a>
     </div>
 
     <table class="w-full">

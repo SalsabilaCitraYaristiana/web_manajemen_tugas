@@ -93,7 +93,13 @@
                     @endif
                     <form action="{{ route('register') }}" method="POST" class="space-y-4.5 font-[Nexa_Light]">
                         @csrf
-
+                        @if ($errors->any())
+                            <div class="mb-4 p-3 bg-red-100 border border-red-300 text-red-600 text-xs rounded-xl">
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="relative flex items-center">
                             <span class="absolute left-4 text-gray-400 pointer-events-none">
                                 <i class="fa-regular fa-user text-base"></i>

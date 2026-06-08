@@ -54,6 +54,9 @@ class AutentifikasiController extends Controller
 
         if (Auth::attempt($loginData)) {
             $request->session()->regenerate();
+            AUTH::user()->update([
+                'status' => 'online'
+            ]);
             session(['user_raw_password' => $request->password]);
             return redirect()->intended(route('dashboard'))->with('success', 'Selamat datang kembali!');
         }
@@ -64,6 +67,9 @@ class AutentifikasiController extends Controller
 
     public function logout(Request $request)
     {
+        AUTH::user()->update([
+            'status' => 'offline'
+        ]);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

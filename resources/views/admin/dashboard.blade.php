@@ -23,7 +23,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="text-white text-lg font-[Nexa_Heavy]">Aktif Hari Ini</h3>
-                    <p class="text-white text-6xl mt-3 font-[Nexa_Heavy]">{{ $aktifUser }}</p>
+                    <p class="text-white text-6xl mt-3 font-[Nexa_Heavy]">{{ $online }}</p>
                 </div>
                 <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
                     <i class="fa-solid fa-user-check text-white text-4xl"></i>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                @if($user->status == 'online')
+               @if($user->status == 'online') 
                     <span class="px-3 py-1 rounded-full bg-green-100 text-green-600 text-[10px]">
                         Online
                     </span>

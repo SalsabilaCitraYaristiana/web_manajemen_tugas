@@ -84,4 +84,10 @@ class TugasController extends Controller
 
         return redirect()->route('daftar.tugas')->with('success', 'Tugas berhasil dihapus!');
     }
+
+    public function show($id)
+    {
+        $tugas = Tugas::findOrFail($id);
+        return view('detail_tugas', compact('tugas'));
+    }
 }
