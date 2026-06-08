@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- hero section --}}
     <div  id="beranda" class="relative w-full px-6 pt-12 md:pt-20 overflow-visible flex flex-col items-center">
         <div class="absolute inset-x-0 top-0 h-[85%] md:h-[85%] bg-[#0B2D48] z-0"></div>
             <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center mt-[2%] md:mt-[3%] relative z-10" data-aos="fade-up" data-aos-duration="1000">
@@ -32,9 +31,7 @@
             </div>
         </div>
     </div>
-    {{-- end hero section --}}
 
-    {{-- main content --}}
     <div class="container mx-auto md:px-6 md:py-12 mt-[5%]">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 w-full">
             <div class="flex flex-col md:flex-row items-center gap-2 md:gap-18 shrink-0 w-full lg:w-auto" data-aos="fade-right" data-aos-duration="900">
@@ -56,9 +53,7 @@
             </div>
         </div>
     </div>
-    {{-- end main content--}}
 
-    {{-- content 2 --}}
     <div class="container mx-auto px-4 py-12 mt-[10%]">
         <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800"> 
             <h1 class="text-3xl md:text-4xl font-[Nexa_Heavy] text-black">Baca ulasan pengguna</h1>
@@ -67,7 +62,6 @@
             </p>
         </div>
 
-        {{-- card --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div class="bg-[#DEEAFC] rounded-3xl p-8 flex flex-col justify-between shadow-sm border border-transparent" data-aos="fade-up" data-aos-delay="100">
                 <div>
@@ -89,7 +83,6 @@
             </div>
         </div>
 
-        {{-- card 2 --}}
         <div class="bg-[#DEEAFC] rounded-3xl p-8 flex flex-col justify-between shadow-sm border border-transparent" data-aos="fade-up" data-aos-delay="200">
             <div>
                 <span class="text-4xl font-[Nexa_Heavy] text-black block mb-4">"</span>
@@ -110,7 +103,6 @@
             </div>
         </div>
 
-        {{-- card 3 --}}
         <div class="bg-[#DEEAFC] rounded-3xl p-8 flex flex-col justify-between shadow-md relative" data-aos="fade-up" data-aos-delay="300">
             <div>
                 <span class="text-4xl font-[Nexa_Heavy] text-black block mb-4">"</span>
@@ -131,9 +123,7 @@
             </div>
         </div>
     </div>
-    {{-- end content 2 }}
 
-   {{-- content 3 --}}
     <div class="bg-[#0B2D48] px-0 py-16 md:py-24 w-[100vw] overflow-hidden relative left-1/2 right-1/2 -translate-x-1/2 flex items-center justify-center mt-[15%]">
         <div class="w-full max-w-5xl px-10 md:px-0 text-center" data-aos="zoom-in" data-aos-duration="1000">
             <div class="bg-[#DEEAFB] rounded-[2.5rem] w-full py-12 px-6 md:p-12 text-center shadow-lg">
@@ -183,7 +173,6 @@
             </div>
         </div>
     </div>
-    {{-- end content 3 --}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

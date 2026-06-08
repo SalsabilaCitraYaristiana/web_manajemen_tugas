@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Tugas;
 
-// ==================== RUTE PUBLIK (TANPA LOGIN) ====================
 Route::get('/', function () {
     return view('index');
 })->name('index');
@@ -24,19 +23,15 @@ Route::get('/fitur', function () {
     return view('fitur');
 })->name('fitur');
 
-// Autentifikasi User (Guest)
 Route::get('autentifikasi/login', [AutentifikasiController::class, 'showLogin'])->name('login');
 Route::post('autentifikasi/login', [AutentifikasiController::class, 'login']);
 Route::get('autentifikasi/regis', [AutentifikasiController::class, 'showRegister'])->name('register');
 Route::post('autentifikasi/regis', [AutentifikasiController::class, 'register']);
 
-// Autentifikasi Admin (Guest)
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-
-// ==================== RUTE PROTECTED USER (WAJIB LOGIN USER) ====================
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -96,12 +91,9 @@ Route::middleware('auth')->group(function () {
         return response()->json($tugas);
     })->name('api.search');
 
-}); // <--- PENUTUP MIDDLEWARE AUTH USER YANG BENAR
+    });     
 
-
-// ==================== RUTE PROTECTED ADMIN (WAJIB LOGIN ADMIN) ====================
-// Catatan: Ganti 'auth' menjadi 'auth:admin' jika Anda menggunakan multi-auth guard admin bawaan Laravel
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/pengguna', [AdminController::class, 'pengguna'])->name('admin.pengguna');
-});
+    Route::middleware('auth')->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/admin/pengguna', [AdminController::class, 'pengguna'])->name('admin.pengguna');
+    });

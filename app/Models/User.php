@@ -54,18 +54,23 @@ class User extends Authenticatable
 
     public function getStatusAttribute()    
     {
+        // jika belum pernah login
         if (!$this->last_seen) {
             return 'offline';
     }
+
+        // ngitung selisih waktu sekarang dengan aktivitas terakhir
         $minutes = now()->diffInMinutes($this->last_seen);
 
+        // aktif dlm 5 menit terakhir
         if ($minutes <= 5) {
             return 'online';
     }
-
+        // ga aktif 5-30 menit
         if ($minutes <= 30) {
             return 'idle';
     }
+        // lebih dari 30 menit dianggap offline
         return 'offline';
 }   
 }

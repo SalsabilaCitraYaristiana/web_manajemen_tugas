@@ -1,11 +1,10 @@
-{{-- Navigation Bar --}}
+
     <header class="bg-gray-50">
         <nav class="flex justify-between items-center py-5 px-10 mx-auto">
             <div>
                 <img class="w-45" src="../img/fokusin_logo.png" alt="Logo">
             </div>
 
-            {{-- hamburger menu --}}
             <button id="menu-btn" class="lg:hidden text-[#142D43] focus:outline-none cursor-pointer z-50">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -27,5 +26,5 @@
             </div>
         </nav>
     </header>
-{{-- end Navigation Bar --}}
+
 

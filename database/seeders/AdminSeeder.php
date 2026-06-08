@@ -10,11 +10,12 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
+        // bikin akun admin default
         User::firstOrCreate(
-            [
+            [   // nyari data
                 'email' => 'admin@fokusin.com'
             ],
-            [
+            [   // klo gda, buat ini
                 'name' => 'Administrator',
                 'username' => 'admin',
                 'password' => Hash::make('admin123'),

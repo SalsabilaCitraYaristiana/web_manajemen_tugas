@@ -93,11 +93,9 @@
         const overlay = document.getElementById('sidebarOverlay');
 
         if (sidebar.classList.contains('-translate-x-full')) {
-            // Buka Sidebar
             sidebar.classList.remove('-translate-x-full');
             overlay.classList.remove('hidden');
         } else {
-            // Tutup Sidebar
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
         }

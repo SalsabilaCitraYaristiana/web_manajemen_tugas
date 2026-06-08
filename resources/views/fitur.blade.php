@@ -1,19 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- hero section fitur--}}
     <div id="bagian-about" class="relative w-full px-6 pt-12 md:pt-20 overflow-visible flex flex-col items-center">
         <div class="absolute inset-x-0 top-0 h-[85%] md:h-[85%] bg-[#0B2D48] z-0"></div>
             <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center mt-[2%] md:mt-[3%] relative z-10" data-aos="fade-up" data-aos-duration="1000">
-                {{-- Tombol Pill --}}
                 <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full shadow-sm mb-8 bg-[#EBF3FD]">
-                    {{-- Icon Buku Kuning --}}
                     <span class="flex items-center justify-center bg-[#F5B82A] text-[#0B2D48] w-10 h-10 rounded-full p-1">
-                        <img
-                            src="{{ asset('img/logo-kecil.png') }}"
-                            alt="fokusin"
-                            class="w-full h-full object-contain"
-                        >
+                        <img src="{{ asset('img/logo-kecil.png') }}" alt="fokusin" class="w-full h-full object-contain">
                     </span>
                     <span class="text-[#062E4C] text-sm font-[Nexa_Heavy] tracking-wide">
                         Fitur Tersedia
@@ -147,9 +140,7 @@
             </div>
         </div>
     </div>
-    {{-- end hero section --}}
 
-    {{-- content 2 --}}
     <section class="w-full bg-white py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-4 space-y-8 flex flex-col items-start" data-aos="fade-right" data-aos-duration="1000">
@@ -199,10 +190,6 @@
         </div>
     </section>
 
-    {{-- end content 2 --}}
-
-
-    {{-- content 3 --}}
     <section class="w-full bg-white py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
         <div class="max-w-6xl mx-auto flex flex-col items-center">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full shadow-sm mb-6 bg-[#EBF3FD]" data-aos="fade-up">
@@ -271,7 +258,6 @@
         </div>
     </section>
 
-    {{-- end content 3 --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({

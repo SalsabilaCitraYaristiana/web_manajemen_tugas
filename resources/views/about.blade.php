@@ -1,13 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- hero section about--}}
     <div id="bagian-about" class="relative w-full px-6 pt-12 md:pt-20 overflow-visible flex flex-col items-center">
         <div class="absolute inset-x-0 top-0 h-[85%] md:h-[85%] bg-[#0B2D48] z-0"></div>
             <div class="max-w-4xl w-full mx-auto flex flex-col items-center text-center mt-[2%] md:mt-[3%] relative z-10" data-aos="fade-up" data-aos-duration="1000">
-                {{-- Tombol Pill --}}
                 <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full shadow-sm mb-8 bg-[#EBF3FD]">
-                    {{-- Icon Buku Kuning --}}
                     <span class="flex items-center justify-center bg-[#F5B82A] text-[#0B2D48] w-10 h-10 rounded-full p-1">
                         <img
                             src="{{ asset('img/logo-kecil.png') }}"
@@ -43,9 +40,7 @@
             </div>
         </div>
     </div>
-    {{-- end hero section --}}
 
-    {{-- content 2 --}}
     <div class="w-full flex flex-col items-center bg-white pb-24 mt-15">
         <section class="w-full max-w-5xl mx-auto px-6 py-12 text-center" data-aos="fade-up" data-aos-duration="900">
             <h2 class="text-xl md:text-3xl font-[Nexa_Heavy] text-[#0B2D48] mb-8 tracking-wide">Dipercaya oleh institusi</h2>
@@ -85,9 +80,7 @@
                 </div>
         </section>
     </div>
-    {{-- end content 2 --}}
 
-    {{-- content 3 --}}
     <div class="w-full bg-white pb-24">
         <section id="bagian-fitur" class="w-full max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
             <div class="inline-flex items-center gap-2 bg-[#EBF3FD] px-4 py-1.5 rounded-full mb-6 border border-gray-100" data-aos="fade-up" data-aos-duration="700">
@@ -170,9 +163,7 @@
             </div>
         </section>
     </div>
-    {{-- end content 3 --}}
 
-    {{-- content 4 --}}
     <div class="w-full bg-white pb-24">
         <section id="kenapa-fokusin" class="w-full max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-5 flex flex-col items-start text-left" data-aos="fade-right" data-aos-duration="1000"> 
@@ -224,9 +215,7 @@
             </div>
         </section>
     </div>
-    {{-- end content 4 --}}
 
-    {{-- content 5 --}}
     <div class="w-full bg-white pb-32">
         <section id="tim-kami" class="w-full max-w-6xl mx-auto px-6 flex flex-col items-center text-center relative">
             <div class="inline-flex items-center gap-2 bg-[#EBF3FD] px-4 py-1.5 rounded-full mb-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-duration="700">
@@ -354,5 +343,4 @@
             scrollbar-width: none;
         }
     </style>
-    {{-- end content 5 --}}
 @endsection

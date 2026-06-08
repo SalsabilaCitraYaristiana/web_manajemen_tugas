@@ -32,7 +32,6 @@
                         <tr class="hover:bg-gray-50/50 transition-all">
                             <td class="py-4 text-center font-bold">{{ $index + 1 }}</td>
 
-                            {{-- ✅ Judul tugas sekarang bisa diklik → ke halaman detail --}}
                             <td class="py-4">
                                 <a href="{{ route('tugas.show', $tugas->id) }}" class="block hover:opacity-75 transition-opacity">
                                     <div class="font-[Nexa_Heavy] text-[#0B2D48] text-sm hover:underline">{{ $tugas->judul }}</div>
@@ -63,7 +62,6 @@
                                         <i class="fa-solid fa-trash-can text-[11px]"></i>
                                     </button>
 
-                                    {{-- Tombol edit tetap ke halaman edit --}}
                                     <a href="{{ route('tugas.edit', $tugas->id) }}"
                                        class="w-7 h-7 bg-[#F4C01E] text-[#0B2D48] rounded flex items-center justify-center hover:bg-[#dca910] transition-all cursor-pointer">
                                         <i class="fa-solid fa-pen-to-square text-[11px]"></i>
@@ -76,9 +74,9 @@
                         <tr>
                             <td colspan="5" class="py-12 text-center text-gray-400 font-[Nexa_Light]">
                                 @if(request('search'))
-                                    Tugas dengan kata kunci "{{ request('search') }}" tidak ditemukan. 🔍
+                                    Tugas dengan kata kunci "{{ request('search') }}" tidak ditemukan. 
                                 @else
-                                    Belum ada daftar tugas. Yuk, klik tombol tambah tugas di bawah! ✨
+                                    Belum ada daftar tugas. Yuk, klik tombol tambah tugas di bawah! 
                                 @endif
                             </td>
                         </tr>

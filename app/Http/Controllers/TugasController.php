@@ -14,20 +14,16 @@ class TugasController extends Controller
     {
         $keyword = $request->input('search');
 
-        // 1. Logika Pengalihan Langsung ke Tampilan Detail Tugas
         if ($keyword) {
-            // Cari tugas milik user login yang judulnya sama persis
             $tugasAkurat = Tugas::where('user_id', Auth::id())
                 ->where('judul', $keyword)
                 ->first();
 
-            // Jika ketemu yang pas, langsung arahkan ke rute detail (tugas.show)
             if ($tugasAkurat) {
                 return redirect()->route('tugas.show', ['id' => $tugasAkurat->id]);
             }
         }
 
-        // 2. Logika Filter Tabel Biasa (Jika keyword tidak pas/hanya sebagian kata)
         $semuaTugas = Tugas::where('user_id', Auth::id())
             ->when($keyword, function($query) use ($keyword) {
                 $query->where(function($q) use ($keyword) {
@@ -43,12 +39,8 @@ class TugasController extends Controller
 
     public function show($id)
         {
-        // Mengambil data tugas berdasarkan ID yang diklik/dicari
         $tugas = Tugas::where('user_id', Auth::id())->findOrFail($id);
         
-        // CATATAN PENTING:
-        // Jika nama file blade halaman biru (detail) Anda memiliki nama lain, 
-        // ganti tulisan 'detail_tugas' di bawah ini dengan nama file tersebut.
         return view('detail_tugas', compact('tugas')); 
     }
 
