@@ -107,11 +107,6 @@
                                             Kamu memiliki {{ Auth::user()->unreadNotifications->count() }} notifikasi baru
                                         </p>
                                     </div>
-                                    @if(Auth::user()->unreadNotifications->count() > 0)
-                                        <a href="{{ route('notif.readall') }}" class="text-[11px] font-[Nexa_Heavy] text-blue-500 hover:underline">
-                                            Tandai semua dibaca
-                                        </a>
-                                    @endif
                                 </div>
 
                                 <div class="max-h-[360px] overflow-y-auto space-y-5 pr-1">
