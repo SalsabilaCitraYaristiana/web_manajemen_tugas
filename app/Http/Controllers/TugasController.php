@@ -82,6 +82,13 @@ class TugasController extends Controller
             'status' => $request->status,
         ]);
 
+        if ($request->status === 'Selesai') {
+            $notification = Auth::user()->unreadNotifications()->where('data->tugas_id', $tugas->id)->first();
+            if ($notification) {
+                $notification->markAsRead();
+            }
+        }
+
         return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil disimpan.');
     }
 
