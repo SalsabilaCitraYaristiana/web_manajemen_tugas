@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Notifications\notifdeadline;
 
 class TugasController extends Controller
 {
@@ -40,7 +42,7 @@ class TugasController extends Controller
     }
 
     public function show($id)
-    {
+        {
         // Mengambil data tugas berdasarkan ID yang diklik/dicari
         $tugas = Tugas::where('user_id', Auth::id())->findOrFail($id);
         
@@ -77,6 +79,13 @@ class TugasController extends Controller
             'status' => $request->status,
         ]);
 
+        if ($request->status === 'Selesai') {
+            $notification = Auth::user()->unreadNotifications()->where('data->tugas_id', $tugas->id)->first();
+            if ($notification) {
+                $notification->markAsRead();
+            }
+        }
+
         return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil disimpan.');
     }
 
@@ -85,6 +94,6 @@ class TugasController extends Controller
         $tugas = Tugas::where('user_id', Auth::id())->findOrFail($id);
         $tugas->delete();
 
-        return redirect()->route('daftar.tugas')->with('success', 'Tugas berhasil dihapus!');
+        return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil dihapus!');
     }
 }
