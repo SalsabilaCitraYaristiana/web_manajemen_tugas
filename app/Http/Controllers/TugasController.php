@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Notifications\notifdeadline;
 
 class TugasController extends Controller
 {
@@ -35,7 +37,7 @@ class TugasController extends Controller
             'status' => 'required|in:Belum Selesai,Sedang Berjalan,Selesai',
         ]);
 
-        Tugas::create([
+        $tugas = Tugas::create([
             'user_id' => Auth::id(),
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
@@ -44,7 +46,13 @@ class TugasController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('daftar.tugas')->with('success', 'Tugas berhasil ditambahkan!');
+        $deadlineDate = Carbon::parse($request->deadline)->startOfDay();
+        $today = Carbon::now()->startOfDay();
+        $sisaHari = $today->diffInDays($deadlineDate, false);
+
+        Auth::user()->notify(new notifdeadline($tugas, $sisaHari));
+
+        return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil ditambahkan!');
     }
 
     public function edit($id)
@@ -82,7 +90,7 @@ class TugasController extends Controller
         $tugas = Tugas::where('user_id', Auth::id())->findOrFail($id);
         $tugas->delete();
 
-        return redirect()->route('daftar.tugas')->with('success', 'Tugas berhasil dihapus!');
+        return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil dihapus!');
     }
 
     public function show($id)

@@ -99,35 +99,66 @@
                                 @endif
                             </button>
 
-                            <div id="notificationDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.08)] overflow-hidden animate-fade-in-down">
-                                <div class="p-4 border-b border-gray-100 flex items-center justify-between">
-                                    <h3 class="text-xs font-[Nexa_Heavy] text-[#0B2D48] tracking-tight">Notifikasi</h3>
+                            <div id="notificationDropdown" class="hidden absolute left-0 mt-3 w-[88vw] sm:w-[500px] origin-top-left bg-white rounded-[24px] border border-[#142A74]/15 shadow-[0_10px_40px_rgba(0,0,0,0.06)] p-6 z-50 text-[#0B2D48] animate-fade-in-down">
+                                <div class="mb-5 flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-[Nexa_Heavy] text-lg text-[#142A74]">Notifikasi</h3>
+                                        <p class="font-[Nexa_Light] text-xs text-gray-400 mt-0.5">
+                                            Kamu memiliki {{ Auth::user()->unreadNotifications->count() }} notifikasi baru
+                                        </p>
+                                    </div>
                                     @if(Auth::user()->unreadNotifications->count() > 0)
-                                        <a href="{{ route('notif.readall') }}" class="text-[10px] text-blue-500 hover:underline font-semibold">Tandai semua dibaca</a>
+                                        <a href="{{ route('notif.readall') }}" class="text-[11px] font-[Nexa_Heavy] text-blue-500 hover:underline">
+                                            Tandai semua dibaca
+                                        </a>
                                     @endif
                                 </div>
 
-                                <div class="max-h-64 overflow-y-auto divide-y divide-gray-50">
+                                <div class="max-h-[360px] overflow-y-auto space-y-5 pr-1">
                                     @forelse(Auth::user()->unreadNotifications as $notif)
-                                        <div class="p-3.5 hover:bg-gray-50/80 transition-all flex gap-3 items-start">
-                                            <div class="w-7 h-7 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                        @php
+                                            $isSelesai = Str::contains(Str::lower($notif->data['pesan']), 'selesai');
+                                        @endphp
+
+                                        <div class="flex items-center justify-between gap-4 py-0.5">
+                                            <div class="flex items-center gap-4 min-w-0">
+                                                @if($isSelesai)
+                                                    <div class="w-11 h-11 bg-[#FDF3D0] text-[#F8BF12] rounded-xl flex items-center justify-center shrink-0">
+                                                        <div class="w-5 h-5 rounded-full border-2 border-[#F8BF12] flex items-center justify-center text-[9px]">
+                                                            <i class="fa-solid fa-check"></i>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="w-11 h-11 bg-[#E2ECFA] text-[#142A74] rounded-xl flex items-center justify-center shrink-0">
+                                                        <i class="fa-regular fa-file-lines text-base"></i>
+                                                    </div>
+                                                @endif
+
+                                                <div class="min-w-0">
+                                                    <p class="font-[Nexa_Light] text-xs text-gray-600 leading-relaxed">
+                                                        {!! preg_replace('/"([^"]+)"/', '<span class="font-[Nexa_Heavy] text-[#0B2D48]">"$1"</span>', $notif->data['pesan']) !!}
+                                                    </p>
+                                                    @if(isset($notif->data['deadline']))
+                                                        <p class="font-[Nexa_Light] text-[10px] text-gray-400 mt-0.5">
+                                                            Deadline: {{ \Carbon\Carbon::parse($notif->data['deadline'])->format('d/m/Y') }}
+                                                        </p>
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div class="flex-1 space-y-0.5">
-                                                <p class="text-[11px] text-[#0B2D48] font-medium leading-normal">
-                                                    {{ $notif->data['pesan'] }}
-                                                </p>
-                                                <span class="text-[9px] text-gray-400 block font-[Nexa_Light]">
-                                                    Deadline: {{ \Carbon\Carbon::parse($notif->data['deadline'])->format('d M Y') }}
+
+                                            <div class="flex items-center gap-2 shrink-0 whitespace-nowrap pl-2">
+                                                <span class="font-[Nexa_Light] text-[10px] text-gray-400">
+                                                    {{ str_replace(['thn', 'bln', 'mg', 'hr', 'j', 'm', 'dt'], ['tahun', 'bulan', 'minggu', 'hari', 'jam', 'menit', 'detik'], $notif->created_at->diffForHumans(null, true, true)) }} lalu
                                                 </span>
+                                                <span class="h-1.5 w-1.5 rounded-full {{ $isSelesai ? 'bg-[#142A74]' : 'bg-[#F8BF12]' }}"></span>
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="p-6 text-center flex flex-col items-center justify-center space-y-2">
-                                            <div class="w-10 h-10 rounded-full bg-gray-50 text-gray-300 flex items-center justify-center text-sm">
+                                        <div class="py-12 text-center flex flex-col items-center justify-center space-y-2">
+                                            <div class="w-12 h-12 rounded-full bg-gray-50 text-gray-300 flex items-center justify-center text-base">
                                                 <i class="fa-regular fa-bell-slash"></i>
                                             </div>
-                                            <p class="text-[11px] text-gray-400 font-medium">Tidak ada notifikasi baru.</p>
+                                            <p class="text-xs text-gray-400 font-[Nexa_Light]">Tidak ada notifikasi baru.</p>
                                         </div>
                                     @endforelse
                                 </div>
