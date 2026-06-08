@@ -37,6 +37,28 @@ class TugasController extends Controller
         return view('daftar_tugas', compact('semuaTugas'));
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'deadline' => 'required|date',
+            'prioritas' => 'required|in:High,Medium,Low',
+        ]);
+
+        Tugas::create([
+            'user_id' => Auth::id(),
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'deadline' => $request->deadline,
+            'prioritas' => $request->prioritas,
+            'status' => 'Belum Selesai',
+        ]);
+
+        return redirect()->route('daftar.tugas')
+            ->with('toast_success', 'Tugas berhasil ditambahkan!');
+    }
+
     public function show($id)
         {
         $tugas = Tugas::where('user_id', Auth::id())->findOrFail($id);
