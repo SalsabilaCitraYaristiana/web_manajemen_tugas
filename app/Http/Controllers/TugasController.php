@@ -109,5 +109,27 @@ class TugasController extends Controller
         $tugas->delete();
 
         return redirect()->route('daftar.tugas')->with('toast_success', 'Tugas berhasil dihapus!');
-    }
+    } 
+    public function store(Request $request)
+{
+    $request->validate([
+        'judul'     => 'required|string|max:255',
+        'deskripsi' => 'required',
+        'deadline'  => 'required|date',
+        'prioritas' => 'required',
+        'status'    => 'required',
+    ]);
+
+    
+    Tugas::create([
+        'user_id'   => auth()->id(), 
+        'judul'     => $request->judul,
+        'deskripsi' => $request->deskripsi,
+        'deadline'  => $request->deadline,
+        'prioritas' => $request->prioritas,
+        'status'    => $request->status,
+    ]);
+
+    return redirect('/dashboard'); 
+}
 }
