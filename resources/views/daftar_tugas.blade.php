@@ -32,9 +32,12 @@
                         <tr class="hover:bg-gray-50/50 transition-all">
                             <td class="py-4 text-center font-bold">{{ $index + 1 }}</td>
 
+                            {{-- ✅ Judul tugas sekarang bisa diklik → ke halaman detail --}}
                             <td class="py-4">
-                                <div class="font-[Nexa_Heavy] text-[#0B2D48] text-sm">{{ $tugas->judul }}</div>
-                                <div class="text-[10px] text-gray-400 font-[Nexa_Light] mt-0.5 max-w-md truncate">{{ $tugas->deskripsi }}</div>
+                                <a href="{{ route('tugas.show', $tugas->id) }}" class="block hover:opacity-75 transition-opacity">
+                                    <div class="font-[Nexa_Heavy] text-[#0B2D48] text-sm hover:underline">{{ $tugas->judul }}</div>
+                                    <div class="text-[10px] text-gray-400 font-[Nexa_Light] mt-0.5 max-w-md truncate">{{ $tugas->deskripsi }}</div>
+                                </a>
                             </td>
 
                             <td class="py-4 text-center text-gray-400 font-medium">
@@ -60,6 +63,7 @@
                                         <i class="fa-solid fa-trash-can text-[11px]"></i>
                                     </button>
 
+                                    {{-- Tombol edit tetap ke halaman edit --}}
                                     <a href="{{ route('tugas.edit', $tugas->id) }}"
                                        class="w-7 h-7 bg-[#F4C01E] text-[#0B2D48] rounded flex items-center justify-center hover:bg-[#dca910] transition-all cursor-pointer">
                                         <i class="fa-solid fa-pen-to-square text-[11px]"></i>

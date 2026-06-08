@@ -306,7 +306,7 @@
                         // Render tiap data tugas ke dalam format popover
                         data.forEach(tugas => {
                             // URL dialihkan ke halaman edit/detail tugas berdasarkan id
-                            const detailUrl = `/tugas/${tugas.id}/edit`;
+                            const detailUrl = `/tugas/detail/${tugas.id}`;
 
                             resultsList.innerHTML += `
                                 <a href="${detailUrl}" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-50 transition-all group block">
