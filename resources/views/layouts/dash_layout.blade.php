@@ -103,7 +103,7 @@
                                 <div class="mb-5 flex items-center justify-between">
                                     <div>
                                         <h3 class="font-[Nexa_Heavy] text-lg text-[#142A74]">Notifikasi</h3>
-                                        <p class="font-[Nexa_Light] text-xs text-gray-400 mt-0.5">
+                                        <p class="font-[Nexa_Light] font-semibold text-xs text-grey mt-0.5">
                                             Kamu memiliki {{ Auth::user()->unreadNotifications->count() }} notifikasi baru
                                         </p>
                                     </div>
@@ -136,11 +136,11 @@
                                                 @endif
 
                                                 <div class="min-w-0">
-                                                    <p class="font-[Nexa_Light] text-xs text-gray-600 leading-relaxed">
+                                                    <p class="font-[Nexa_Light] font-semibold text-xs text-gray leading-relaxed">
                                                         {!! preg_replace('/"([^"]+)"/', '<span class="font-[Nexa_Heavy] text-[#0B2D48]">"$1"</span>', $notif->data['pesan']) !!}
                                                     </p>
                                                     @if(isset($notif->data['deadline']))
-                                                        <p class="font-[Nexa_Light] text-[10px] text-gray-400 mt-0.5">
+                                                        <p class="font-[Nexa_Light] text-[10px] font-semibold text-xs text-gray mt-0.5">
                                                             Deadline: {{ \Carbon\Carbon::parse($notif->data['deadline'])->format('d/m/Y') }}
                                                         </p>
                                                     @endif

@@ -73,27 +73,27 @@ Route::get('/notif/read-all', function() {
 Route::get('/api/search-tugas', function(Request $request) {
     $keyword = $request->query('search');
 
-    // Jika kolom search kosong, kembalikan array kosong
+
     if (empty($keyword)) {
         return response()->json([]);
     }
 
-    // Mengambil data tugas milik user yang sedang login berdasarkan kata kunci
+
     $tugas = Tugas::where('user_id', Auth::id())
         ->where(function($q) use ($keyword) {
             $q->where('judul', 'LIKE', "%{$keyword}%")
               ->orWhere('deskripsi', 'LIKE', "%{$keyword}%");
         })
-        ->take(5) // Membatasi maksimal 5 hasil agar kotak popover tidak terlalu panjang
+        ->take(5)
         ->get(['id', 'judul', 'deskripsi', 'deadline']);
 
-    // Mengubah format tanggal deadline menjadi d/m/Y sebelum dikirim ke JavaScript
+
     $tugas->transform(function($item) {
         $item->formatted_deadline = $item->deadline ? \Carbon\Carbon::parse($item->deadline)->format('d/m/Y') : '-';
         return $item;
     });
 
-    // Mengembalikan data dalam bentuk JSON
+
     return response()->json($tugas);
 })->middleware('auth')->name('api.search');
 
