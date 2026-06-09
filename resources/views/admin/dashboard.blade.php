@@ -44,8 +44,9 @@
                 </span>
             </div>
 
-            <div class="space-y-4">
-                @foreach($users->take(6) as $user)
+            <div class="space-y-4"> 
+                
+                @foreach($users->take(6) as $user) 
                 <div class="flex items-center justify-between border-b pb-3 gap-2">
                     <div class="flex items-center gap-3 min-w-0">
                         <div class="w-10 h-10 rounded-full bg-[#E7C54C] flex items-center justify-center shrink-0">

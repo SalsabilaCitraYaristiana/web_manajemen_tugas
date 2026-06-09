@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
         // bikin akun admin default
         User::firstOrCreate(
             [   // nyari data
-                'email' => 'admin@fokusin.com'
+                'email' => 'admin@fokusin.com' // karena email bersifat unik dan digunakan untuk mengecek apakah akun admin sudah ada atau belum
             ],
             [   // klo gda, buat ini
                 'name' => 'Administrator',

@@ -72,7 +72,7 @@
                         </div>
 
                         <button type="submit" class="w-full h-12 rounded-lg bg-[#F6BF0E] hover:bg-[#E2B00D] text-[#0F2E7A] font-[Nexa_Heavy] font-bold flex items-center justify-center gap-2 transition text-sm sm:text-base cursor-pointer">
-                            <i class="fa-solid fa-right-to-bracket"></i>Login
+                            <i class="fa-solid fa-right-to-bracket">Login</i>
                         </button>
                     </div>
                 </form>
