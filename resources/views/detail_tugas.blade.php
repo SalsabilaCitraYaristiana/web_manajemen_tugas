@@ -4,10 +4,10 @@
 
 <div class="max-w-4xl mx-auto space-y-6">
 
-    <a href="{{ route('daftar.tugas') }}"
+    <a href="{{ route('dashboard') }}"
        class="flex items-center gap-2 text-xs font-[Nexa_Light] text-gray-400 hover:text-[#0B2D48] transition-all">
         <i class="fa-solid fa-arrow-left text-[10px]"></i>
-        Kembali ke daftar tugas
+        Kembali ke dashboard
     </a>
 
     <div class="flex items-center gap-3">
@@ -77,13 +77,13 @@
             </p>
 
             <p class="text-xs font-[Nexa_Heavy] text-[#142A74]">
-                {{ $tugas->progress ?? 0 }}%
+                {{ $tugas->status == 'Sedang Berjalan' ? '50' : '0' }}%
             </p>
         </div>
 
         <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
             <div class="bg-[#142A74] h-2 rounded-full transition-all duration-500"
-                 style="width: {{ $tugas->progress ?? 0 }}%">
+                 style="width:{{ $tugas->status == 'Sedang Berjalan' ? '50' : '0' }}%">
             </div>
         </div>
 
