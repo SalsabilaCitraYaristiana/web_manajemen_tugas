@@ -9,7 +9,7 @@
         <div class="bg-[#E7C54C] rounded-3xl p-6 sm:p-8 shadow-md">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <h3 class="text-white text-base sm:text-lg font-[Nexa_Heavy] truncate">Total Pengguna</h3>
+                    <h3 class="text-white text-base sm:text-lg font-[Nexa_Heavy] truncate ">Total Pengguna</h3>
                     <p class="text-white text-4xl sm:text-5xl md:text-6xl mt-2 sm:mt-3 font-[Nexa_Heavy] break-words">{{ $totalUser }}</p>
                 </div>
 
@@ -39,7 +39,7 @@
                 <h2 class="text-[#0B2D48] text-base sm:text-lg font-[Nexa_Heavy]">
                     Pengguna aktif saat ini
                 </h2>
-                <span class="text-xs text-gray-400 shrink-0">
+                <span class="text-xs text-gray-400 shrink-0 font-[Nexa_light]">
                     {{ $online }} Online
                 </span>
             </div>
@@ -52,10 +52,10 @@
                             <i class="fa-solid fa-user text-white text-sm"></i>
                         </div>
                         <div class="min-w-0">
-                            <p class="text-sm font-semibold text-[#0B2D48] truncate">
+                            <p class="text-sm font-semibold text-[#0B2D48] truncate font-[Nexa_Heavy]">
                                 {{ $user->name }}
                             </p>
-                            <p class="text-[11px] text-gray-400 truncate">
+                            <p class="text-[11px] text-gray-400 truncate font-[Nexa_Heavy]">
                                 {{ $user->email }}
                             </p>
                         </div>
@@ -63,15 +63,15 @@
 
                     <div class="shrink-0">
                         @if($user->status == 'online')
-                            <span class="px-2.5 py-1 rounded-full bg-green-100 text-green-600 text-[10px] font-medium block text-center">
+                            <span class="px-2.5 py-1 rounded-full bg-green-100 text-green-600 text-[10px] font-medium block text-center font-[Nexa_light]">
                                 Online
                             </span>
                         @elseif($user->status == 'idle')
-                            <span class="px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-600 text-[10px] font-medium block text-center">
+                            <span class="px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-600 text-[10px] font-medium block text-center font-[Nexa_light]">
                                 Idle
                             </span>
                         @else
-                            <span class="px-2.5 py-1 rounded-full bg-gray-200 text-gray-600 text-[10px] font-medium block text-center">
+                            <span class="px-2.5 py-1 rounded-full bg-gray-200 text-gray-600 text-[10px] font-medium block text-center font-[Nexa_light]">
                                 Offline
                             </span>
                         @endif
@@ -89,15 +89,15 @@
             <div class="space-y-4">
                 @foreach($users->take(6) as $user)
                 <div class="flex items-center gap-3 border-b pb-3 min-w-0">
-                    <div class="w-9 h-9 rounded-full bg-[#D9D9D9] flex items-center justify-center text-[#7A7A7A] text-xs font-bold shrink-0">
+                    <div class="w-9 h-9 rounded-full bg-[#D9D9D9] flex items-center justify-center text-[#7A7A7A] text-xs font-bold shrink-0 font-[Nexa_Heavy]">
                         {{ strtoupper(substr($user->name,0,1)) }}
                     </div>
 
                     <div class="min-w-0">
-                        <p class="text-sm font-semibold text-[#0B2D48] truncate">
+                        <p class="text-sm font-semibold text-[#0B2D48] truncate font-[Nexa_Heavy]">
                             {{ $user->name }}
                         </p>
-                        <p class="text-[11px] text-gray-400 truncate">
+                        <p class="text-[11px] text-gray-400 truncate font-[Nexa_light]">
                             {{ $user->email }}
                         </p>
                     </div>

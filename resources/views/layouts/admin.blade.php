@@ -71,7 +71,7 @@
                     <div class="relative w-full">
                         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
                         <input type="text" name="search" value="{{ request('search') }}" placeholder="Search here"
-                               class="w-full sm:w-[240px] md:w-[320px] h-[45px] rounded-full bg-white pl-11 pr-4 text-sm outline-none border border-transparent focus:border-white">
+                               class="w-full sm:w-[240px] md:w-[320px] h-[45px] rounded-full bg-white pl-11 pr-4 text-sm outline-none border border-transparent focus:border-white font-[Nexa_light]">
                     </div>
                 </form>
 

@@ -44,7 +44,7 @@ class AdminController extends Controller
         $users = User::where('role', 'user')
             ->when($status, function ($query) use ($status) {
                 $query->where('status', $status);
-            })
+            }) //jalanin query status klo user milih filter status
             ->when($search, function ($query) use ($search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%")
