@@ -46,7 +46,7 @@ class AdminController extends Controller
                 $query->where('status', $status);
             })
             ->when($search, function ($query) use ($search) {
-                $query(function ($q) use ($search) {
+                $query->where(function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%");
